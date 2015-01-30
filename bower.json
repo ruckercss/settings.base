@@ -1,0 +1,31 @@
+{
+  "name": "ruckercss-settings.base",
+  "version": "0.1.0",
+  "homepage": "https://github.com/ruckercss/settings.base",
+  "authors": [
+    "DiAngelo (diangelo@bitvice.ro)"
+  ],
+  "description": "RuckerCSS base settings and tools",
+  "main": [
+    "_conf.settings.rk.scss",
+    "_conf.attributes.rk.scss",
+    "_tools.global.fn.rk.scss",
+    "_tools.metrics.fn.rk.scss"
+  ],
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "ruckercss",
+    "sass",
+    "scss",
+    "settings",
+    "configuration",
+    "tools",
+    "mixins"
+  ],
+  "license": "Apache 2",
+  "dependencies": {
+    "ruckercss-app.core": "~0.1.0"
+  }
+}
