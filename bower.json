@@ -26,6 +26,6 @@
   ],
   "license": "Apache 2",
   "dependencies": {
-    "ruckercss-app.core": "~0.1.0"
+    "ruckercss-app.core": "1.1.1"
   }
 }
