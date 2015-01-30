@@ -1,0 +1,81 @@
+//
+// Global functions
+//
+
+//
+// Generate an attribute rule
+//
+// TODO: comment parameters
+// TODO: use variable vor 'data'
+//
+@function rkrFnAttributeRule ($_inType, $_inAttribute)
+{
+	@if map-has-key($rkrMAttributesNaming, $_inType) {
+
+  	  $x: map-get($rkrMAttributesNaming, $_inType);
+
+      @if $_inAttribute != null {
+        @return '[' +$rkrAttributesPrefix + $x + '~="'+$_inAttribute+'"]';
+      } @else {
+        @return '[' + $rkrAttributesPrefix + $x + ']'; 
+      }
+
+	}
+
+	@else {
+		@warn "Unfortunately, no type was not found `#{$_inType}`. "
+	}
+}
+
+//
+// Generate an BEM element
+//
+//  $_inBase      - Main block name
+//  $_inAttribute - The attribute tu be added to the main element
+//  $_inIsElement - TRUE - is element use "__" ; FALSE - is modifier use "--"
+//
+@function rkrFnBEM ($_inBlock, $_inAttribute, $_inIsElement: true)
+{
+  $splitter: '--';
+
+  @if ($_inIsElement) {
+    $splitter: '__';
+  }
+
+  $response: $_inBlock + $splitter + $_inAttribute;
+
+  @return $response;
+}
+
+//
+// rkrFnRegisterAttribute
+// Registers an attribute name to be used next to 'data-'
+//
+@function rkrFnRegisterAttribute($_inAttr, $_inType, $_inName)
+{
+  $attr: map-get($rkrMAttrTypePrefixes, $_inType) + '-' + $_inName;
+  $rkrMAttributesNaming: map-merge($rkrMAttributesNaming, ($_inAttr: $attr));
+  @return $rkrMAttributesNaming;
+}
+
+//
+// rkrFnEntityRule
+// Generate a rule based on received entity params
+//
+@function rkrFnEntityRule($_inEntity, $_inNs, $_inAttr, $_inIsElem: true)
+{
+  $response: rkrFnAttributeRule($_inEntity, null);
+
+  @if $_inAttr != null {
+    $prefix: '--';
+    @if $_inIsElem {
+      $prefix: '__';
+    }
+
+    $param: $_inNs + $prefix + $_inAttr;
+    $response: rkrFnAttributeRule($_inEntity, $param);
+
+  }
+
+  @return $response;
+}

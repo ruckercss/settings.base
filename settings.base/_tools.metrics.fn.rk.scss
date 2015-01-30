@@ -1,0 +1,24 @@
+//
+// Metrics functions
+//
+
+@function rkrFnMModifiers($_inStart, $_inStep, $_inProgressiveIncrement: false) {
+
+  $mResponse: ();
+  
+  $lastVal: $_inStart;
+
+  @each $item in $rkrLBasicModifiers {
+    $index: index($rkrLBasicModifiers, $item) - 1;
+
+    $val: $lastVal + $index * $_inStep;
+
+    @if $_inProgressiveIncrement {
+      $lastVal: $val;
+    }
+    
+    $mResponse: map-merge($mResponse, ($item: $val));
+  }
+
+  @return $mResponse;
+}
