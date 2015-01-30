@@ -24,6 +24,11 @@
     "tools",
     "mixins"
   ],
+  "ignore": [
+    "LICENSE",
+    "*.md",
+    "*.json"
+  ],
   "license": "Apache 2",
   "dependencies": {
     "ruckercss-app.core": "1.1.1"
