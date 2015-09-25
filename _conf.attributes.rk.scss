@@ -15,17 +15,17 @@ $rkrAttributesPrefix: $rkrAttributesHandler + '-';
 //
 
 $rkrMAttributesNaming: (
-  helper: 'hlp',
-  object: 'obj',
-  component: 'com',
-  module: 'mod',
-  utility: 'utl'
+  helper: 	'hlp',
+  object: 	'obj',
+  component: 	'com',
+  module: 	'mod',
+  utility: 	'utl'
 ) !default;
 
 $rkrMAttrTypePrefixes: (
 	layout:			'l',
 	object: 		'o',
-	component: 	'c',
+	component: 		'c',
 	module: 		'm',
 	utility: 		'u'
 ); 
